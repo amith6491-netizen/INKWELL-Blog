@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: #faf8f3;
+    color: #2e2115;
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', Georgia, serif;
+    line-height: 1.25;
+  }
+
+  ::selection {
+    background: #d0c5aa;
+    color: #1a130c;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f0ebe0;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #b3a07a;
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  /* ── Buttons ── */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-ink-800 text-cream font-body font-medium text-sm rounded-none
+           border border-ink-800 transition-all duration-200
+           hover:bg-ink-700 hover:border-ink-700 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-transparent text-ink-800 font-body font-medium text-sm rounded-none
+           border border-ink-800 transition-all duration-200
+           hover:bg-ink-800 hover:text-cream active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 bg-transparent text-ink-600 font-body text-sm rounded-none
+           border border-transparent transition-all duration-200
+           hover:border-ink-300 hover:text-ink-800;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 bg-red-700 text-white font-body text-sm rounded-none
+           border border-red-700 transition-all duration-200
+           hover:bg-red-800 active:scale-[0.98];
+  }
+
+  /* ── Inputs ── */
+  .input-field {
+    @apply w-full px-4 py-2.5 bg-white text-ink-900 font-body text-sm
+           border border-ink-200 rounded-none outline-none
+           transition-all duration-200
+           focus:border-ink-600 focus:ring-1 focus:ring-ink-300
+           placeholder:text-ink-300;
+  }
+
+  .textarea-field {
+    @apply w-full px-4 py-3 bg-white text-ink-900 font-body text-sm
+           border border-ink-200 rounded-none outline-none resize-y min-h-[140px]
+           transition-all duration-200
+           focus:border-ink-600 focus:ring-1 focus:ring-ink-300
+           placeholder:text-ink-300;
+  }
+
+  /* ── Cards ── */
+  .card {
+    @apply bg-white border border-ink-100 transition-shadow duration-300 hover:shadow-md;
+  }
+
+  /* ── Badges ── */
+  .badge {
+    @apply inline-block px-2.5 py-0.5 text-xs font-mono font-medium uppercase tracking-widest
+           border border-ink-200 text-ink-600 bg-parchment;
+  }
+
+  .badge-accent {
+    @apply inline-block px-2.5 py-0.5 text-xs font-mono font-medium uppercase tracking-widest
+           border border-ink-800 text-ink-800 bg-transparent;
+  }
+
+  /* ── Section divider ── */
+  .divider {
+    @apply border-t border-ink-100 my-8;
+  }
+
+  /* ── Page fade-in ── */
+  .page-enter {
+    animation: fadeSlideUp 0.4s ease-out both;
+  }
+
+  /* ── Prose (blog content) ── */
+  .blog-content {
+    @apply text-ink-800 leading-relaxed;
+    font-size: 1.0625rem;
+  }
+
+  .blog-content p { @apply mb-5; }
+  .blog-content h2 { @apply font-display text-2xl font-semibold text-ink-900 mt-10 mb-4; }
+  .blog-content h3 { @apply font-display text-xl font-semibold text-ink-900 mt-8 mb-3; }
+  .blog-content ul { @apply list-disc pl-6 mb-5 space-y-1; }
+  .blog-content ol { @apply list-decimal pl-6 mb-5 space-y-1; }
+  .blog-content blockquote {
+    @apply border-l-4 border-ink-400 pl-5 italic text-ink-600 my-6;
+  }
+  .blog-content code {
+    @apply font-mono text-sm bg-parchment px-1.5 py-0.5 border border-ink-200 text-ink-700;
+  }
+  .blog-content pre {
+    @apply font-mono text-sm bg-ink-900 text-cream p-5 my-6 overflow-x-auto leading-relaxed;
+  }
+  .blog-content a {
+    @apply underline text-ink-700 hover:text-ink-900 transition-colors;
+  }
+}
+
+@layer utilities {
+  .font-display { font-family: 'Playfair Display', Georgia, serif; }
+  .font-body    { font-family: 'DM Sans', sans-serif; }
+  .font-mono    { font-family: 'JetBrains Mono', monospace; }
+}
+
+/* ── Animations ── */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+/* ── Skeleton shimmer ── */
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #e8e2d5 25%, #f0ebe0 50%, #e8e2d5 75%);
+  background-size: 400px 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
