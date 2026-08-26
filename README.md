@@ -387,6 +387,7 @@ railway up
 
 **Vercel:**
 ```bash
+
 npm install -g vercel
 cd frontend
 npm run build
