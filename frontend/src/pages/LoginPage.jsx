@@ -106,12 +106,7 @@ export default function LoginPage() {
             </button>
           </form>
 
-          {/* Demo credentials hint */}
-          <div className="mt-6 p-3 bg-parchment border border-ink-200 text-xs text-ink-500 font-mono">
-            <p className="font-medium text-ink-700 mb-1">Demo Credentials</p>
-            <p>admin@inkwell.com / admin123</p>
-            <p>user@inkwell.com  / user123</p>
-          </div>
+      
         </div>
 
         <p className="text-center text-sm text-ink-500 mt-6 font-body">
