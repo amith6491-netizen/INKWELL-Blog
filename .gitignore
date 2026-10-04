@@ -1,5 +1,6 @@
 node_modules/
+dist/
+.vercel/
 .env
-dist/   
-.DS_Store
-uploads/
+.env.*
+!.env.example
